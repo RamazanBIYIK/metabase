@@ -184,6 +184,7 @@
           (log/warn (tru "Client closed connection, canceling query"))
           ;; This is what does the real work of canceling the query. We aren't checking the result of
           ;; `query-future` but this will cause an exception to be thrown, saying the query has been cancelled.
+          (println (list '.cancel stmt)) ; NOCOMMIT
           (.cancel stmt)
           (throw e))))))
 
